@@ -1,0 +1,23 @@
+<!-- <div class="pizza-item">
+  <a [routerLink]="['/products', pizza.id]">
+    <category-display
+      [Category]="pizza$ | async">
+    </category-display>
+    <h4>{{ pizza.name }}</h4>
+    <button type="button" class="btn btn__ok">
+      View Pizza
+    </button>
+  </a>
+</div> -->
+
+<!-- <div>
+  <p *ngFor = "let category of (category$ | async)"> {{category.name}} whk </p>
+
+</div> -->
+
+<div>
+    id is : {{(category$ | async).name}}
+</div>
+
+
+

@@ -1,0 +1,48 @@
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<div class="container">    
+        
+    <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3"> 
+        
+       
+        
+        <div class="panel panel-default" >
+            <div class="panel-heading">
+                <div class="panel-title text-center">Chitchat.com</div>
+            </div>     
+
+            <div class="panel-body" >
+
+                <form [formGroup] = "loginForm" name="loginForm" id="loginForm" class="form-horizontal" (submit) ="onSubmit()" enctype="multipart/form-data" method="POST">
+                   
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input required autofocus id="loginUsername" type="text" class="form-control" name="loginUsername" value="" placeholder="User" formControlName="loginUsername">                                        
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input  required id="loginPassword" type="loginPassword" class="form-control" name="password" placeholder="Password" formControlName="loginPassword">
+                    </div>                                                                  
+
+                    <div class="form-group" style="margin-top: 1em">
+                        <!-- Button -->
+                        <div class="col-sm-12 controls">
+                            <button    class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i> Log in</button>                          
+                        </div>
+                    </div>
+
+                </form>     
+
+            </div>                     
+        </div>  
+    </div>
+</div>
+
+<div>
+    email is : {{(currentUser$ | async).email}}
+</div>
+

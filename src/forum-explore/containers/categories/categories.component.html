@@ -1,0 +1,75 @@
+<!-- <div>
+  <p *ngFor = "let category of (categories$ | async)"> {{category.name}}</p>
+</div>
+
+<a [routerLink]="['/5ca79446e8788f22ec9fd9db']" preserveQueryParams preserveFragment>category items </a> -->
+  
+
+
+
+<!-- 
+ <section class="container p-t-3"  *ngFor="let id of (categories$ | async).length; let i = index">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>Bootstrap 4 Card Slider</h1>
+            {{id}}
+        </div>
+    </div>
+</section> -->
+
+<section class="carousel slide" data-ride="carousel" id="postsCarousel" *ngFor="let category of (categories$ | async); let i = index">
+
+  
+    <div class="container">
+            {{category.name}}
+        <div class="row">
+            <div class="col-xs-12 text-md-right lead">
+                <a class="btn btn-outline-secondary prev" href="" title="go back"><i class="fa fa-lg fa-chevron-left"></i></a>
+                <a class="btn btn-outline-secondary next" href="" title="more"><i class="fa fa-lg fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="container p-t-0 m-t-2 carousel-inner"  >
+            
+
+        <div class="row row-equal carousel-item active m-t-0" >
+            <div class="col-md-3" *ngFor="let room of category.rooms | slice : 0:4;let ind = index">
+                <div class="card">
+                  
+                    <div class="card-img-top card-img-top-250">
+                        <img class="img-fluid" src="http://i.imgur.com/EW5FgJM.png" alt="Carousel 1" (click) = "getRoomById(room.id)">
+                    </div>
+                    <div class="card-block p-t-2">
+                        <h6 class="small text-wide p-b-2">Insight</h6>
+                        <h2>
+                            
+                           index {{ind}} :  {{room.name}}
+                        </h2>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+
+
+        <div class="row row-equal carousel-item m-t-0">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-img-top card-img-top-250">
+                        <img class="img-fluid" src="//visualhunt.com/photos/l/1/office-student-work-study.jpg" alt="Carousel 4">
+                    </div>
+                    <div class="card-block p-t-2">
+                        <h6 class="small text-wide p-b-2">Another</h6>
+                        <h2>
+                            <a href>Tagline or Call-to-action.</a>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,46 @@
+{
+    "rooms":[
+        {
+            "id": 1,
+            "name": "soccer streams"
+        },
+
+        {
+            "id": 2,
+            "name": "Tennis"
+        },
+        {
+            "id": 3,
+            "name": "Tinder"
+        }
+    ],
+
+    "categories":[
+      {
+        "id" : 1,
+        "name": "sport",
+        "rooms":[
+            {
+                "id": 1,
+                "name": "soccer streams"
+            },
+            {
+                "id": 2,
+                "name": "Tennis"
+            }
+        ]
+      },
+
+      {
+        "id" : 2,
+        "name": "relationships",
+        "rooms":[
+            {
+                "id": 3,
+                "name": "Tinder"
+            }
+        ]
+      }
+
+    ]
+}

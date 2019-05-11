@@ -1,0 +1,107 @@
+
+
+
+
+<div class="container">
+  
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+      <form [formGroup]="registrationForm" role="form" (submit) ="onRegistrationFormSubmit()">
+        <h2>Please Sign Up <small>It's free and always will be.</small></h2>
+        <hr class="colorgraph">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group" [ngClass] ="{'has-error': (registrationForm.controls.firstName.errors && registrationForm.controls.firstName.dirty), 'has-success':!registrationForm.controls.firstName.errors}">
+              <input type="text" name="firstName" id="firstName" class="form-control input-lg" placeholder="First Name" tabindex="1" formControlName="firstName">
+              <ul class="help-block">
+                <li *ngIf="registrationForm.controls.firstName.errors?.required && registrationForm.controls.firstName.dirty">This field is required.</li>
+                <li *ngIf="registrationForm.controls.firstName.errors?.minlength || registrationForm.controls.firstName.errors?.maxlength">Minimum characters:3 , maximum : 15.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group" [ngClass] ="{'has-error': (registrationForm.controls.lastName.errors && registrationForm.controls.lastName.dirty), 'has-success':!registrationForm.controls.lastName.errors}">
+              <input type="text" name="lastName" id="lastName" class="form-control input-lg" placeholder="Last Name" tabindex="2" formControlName="lastName">
+              <ul class="help-block">
+                <li *ngIf="registrationForm.controls.lastName.errors?.required && registrationForm.controls.lastName.dirty">This field is required.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" [ngClass] ="{'has-error': (registrationForm.controls.username.errors && registrationForm.controls.username.dirty)
+        ||(!usernameValid && registrationForm.controls.username.dirty ), 'has-success':!registrationForm.controls.username.errors && usernameValid }">
+          <input type="text" name="username" id="username" class="form-control input-lg" placeholder="Display Name" tabindex="3" formControlName="username" (blurr) ="checkUsername()">
+          <!--<ul class="help-block">-->
+          <!--<li *ngIf="registrationForm.controls.username.errors?.required && registrationForm.controls.username.dirty">This field is required.</li>-->
+          <!--&lt;!&ndash; <li *ngIf ="usernameMessage">{{usernameMessage}}</li>&ndash;&gt;-->
+          <!--</ul>-->
+        </div>
+        <div class="form-group" [ngClass] ="{'has-error': (registrationForm.controls.email.errors && registrationForm.controls.email.dirty) ||
+          (!emailValid && registrationForm.controls.email.dirty), 'has-success':!registrationForm.controls.email.errors && emailValid}">
+
+          <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4" formControlName="email" (blurr)= "checkEmail()">
+          <ul class="help-block">
+            <li *ngIf="registrationForm.controls.email.errors?.required && registrationForm.controls.email.dirty">This field is required.</li>
+            <!--<li *ngIf= "emailMessage">{{emailMessage}}</li>-->
+          </ul>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group"  [ngClass] ="{'has-error': (registrationForm.controls.password.errors && registrationForm.controls.password.dirty), 'has-success':!registrationForm.controls.password.errors}">
+              <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5" formControlName="password">
+              <ul class="help-block">
+                <li *ngIf="registrationForm.controls.password.errors?.required && registrationForm.controls.password.dirty">This field is required.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group" [ngClass] ="{'has-error': (registrationForm.controls.passwordConfirmation.errors && registrationForm.controls.passwordConfirmation.dirty), 'has-success':!registrationForm.controls.passwordConfirmation.errors}">
+              <input type="password" name="passwordConfirmation" id="passwordConfirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6">
+              <ul class="help-block">
+                <li *ngIf="registrationForm.controls.passwordConfirmation.errors?.required && registrationForm.controls.passwordConfirmation.dirty">This field is required.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4 col-sm-3 col-md-3">
+            <span class="button-checkbox">
+              <button type="button" class="btn" data-color="info" tabindex="7">I Agree</button>
+                          <input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1">
+            </span>
+          </div>
+          <div class="col-xs-8 col-sm-9 col-md-9">
+            By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
+          </div>
+        </div>
+
+        <hr class="colorgraph">
+        <div class="row">
+          <div class="col-xs-12 col-md-6"><input [disabled]= "registrationForm.valid" type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+          <div class="col-xs-12 col-md-6"><a href="#" class="btn btn-success btn-block btn-lg">Sign In</a></div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="t_and_c_m" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title" id="myModalLabel">Terms & Conditions</h4>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">I Agree</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</div>
+
+<!-- <p>Username: {{registrationForm.controls.username.value}}</p>
+<p>Password: {{registrationForm.controls.password.value}}</p>
+<p>email: {{registrationForm.controls.email.value}}</p> -->
+
